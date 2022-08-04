@@ -1,0 +1,113 @@
+<h2 class="mt-4 text-decoration-underline text-center"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Panier</h2>
+<div class="mt-1" >
+        <section class="h-custom rounded">
+           <div class="rounded text-center">
+             <div class="row d-flex justify-content-center align-items-center">
+               <div class="col">
+                 <div class="card shopping-cart" style="border-radius: 15px;">
+                   <div class=" text-black">
+                     <div class="row">
+                       <div class="col-lg-9">
+                         <h3 class="text-center fw-bold text-uppercase">Produits du Panier</h3>
+                           <div class="" style="height:90vh; overflow-x: hidden;">
+                            <table class="table table-bordered">
+                                <tr class="row text-center" style="background-color: #e1f5fe;">
+                                    <th class="col-2">Libelle</th>
+                                    <th class="col-1">Prix</th>
+                                    <th class="col-2">Remise</th>
+                                    <th class="col-3">Quantité</th>
+                                    <th class="col-2">Montant</th>
+                                    <th class="col-2">Supprimer</th>
+                                </tr>
+                                <tr class="row" *ngFor="let list of panier">
+                                    <td class="col-2 mt-3">
+                                        <img src="{{'data:image/jpg;base64,' + list.image}}" class="card-img-top" alt="...">
+                                        <p>{{ list.nom }}</p> 
+                                    </td>
+                                    <td class="col-1 mt-3">
+                                                <p>{{ list.prix }}</p>                                
+                                    </td>
+                                    <td class="col-2 mt-3">
+                                            <p>{{ list.remise }}</p> 
+                                    </td>
+                                    <td class="col-3 d-flex justify-content-around mt-3">
+                                        <div class="row d-flex justify-content-around" style="height: 50px;">
+                                        <button class="col-3 btn btn-outline-primary" (click)="addProduit(list,2)">-</button>
+                                        <input class="col-4 text-center btn btn-outline-primary" type="number" min="1" value="{{ list.qte }}">
+                                        <button class="col-3 btn btn-outline-primary" (click)="addProduit(list,1)">+</button>
+                                        </div>
+                                    </td>
+                                    <td class="col-2 mt-3" >
+                                        <input type="text" style="width:60%; text-align:center; border:none" readonly disabled *ngIf="list.remise" value="{{ (+list.prix*(100-list.remise))/100 * +list.qte}}">
+                                        <input type="text" style="width:60%; text-align:center; border:none" readonly disabled *ngIf="!list.remise" value="{{ +list.prix * +list.qte}}">
+                                    </td>                        
+                                    <td class="col-2 mt-3">
+                                        <button class="col-3 btn btn-outline-primary" (click)="addProduit(list,0)"><i class="fa fa-ban" aria-hidden="true"></i>
+                                        </button>
+                                    </td>                        
+                                 </tr>
+                            </table>
+                           </div>         
+                       </div>
+                       <div class="col-lg-3 px-5 py-4">
+         
+                         <h3 class=" mb-3 pt-2 text-center fw-bold text-uppercase">Commande</h3>
+         
+                         <form class="mb-5" #commandeform="ngForm" (ngSubmit)="commande()">
+                          <div class="form-outline mb-5">     
+                              <div class="row mt-3 ">
+                                <h6>Mode de Recupération</h6>
+                                <div class="col-md-6 d-flex justify-content-between">
+                                  <input type="radio" value="place" (click)="place()" name="payement" id="payement" [formControl]="name">
+                                  <label for="payement">Sur Place</label>
+                                </div>
+                                <div class="col-md-6 d-flex justify-content-between">
+                                  <input type="radio" value="livraison" name="payement" id="paye" [formControl]="name">
+                                  <label for="paye">A Livraison</label>
+                                </div>
+                              </div>
+                              <div  class="mt-3 bg-danger rounded row d-flex justify-content-center" *ngIf="name.value ==='livraison'" #Zone id="zone">
+                                <h6 class="mb-3 mt-3">Choisissez votre Zone<fa-icon [icon]="localisation" ></fa-icon>
+                                </h6>
+                                <select class="form-select mb-3 w-75" aria-label="Disabled select example" #select (click)="selec(select)">
+                                  <option selected value="0">Selectionner Votre Zone ...</option>
+                                  <option *ngFor="let v of z" value="{{v.id}}">{{ v.libelle }} : [<p *ngFor="let y of v.quartiers" >{{ y.libelle }}-</p>] {{ v.prix }}</option>
+                                </select>
+                                <h4 *ngIf="livraison">Livraison:{{ livraison}}</h4>
+                              </div>
+                           <!--  <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                               value="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                             <label class="form-label" for="typeText">Card Number</label> -->
+                           </div>
+        
+         
+                           <div class="d-flex justify-content-between px-x">
+                            <p class="fw-bold">Nombre de Produits</p>
+                            <p class="fw-bold">{{ len()}}</p>
+                          </div>
+                          <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
+                            <h5 class="fw-bold mb-0">Total:</h5>
+                            <h5 class="fw-bold mb-0">{{ total() }}</h5>
+                          </div>
+<!--                           <div *ngFor="let li of panier">
+                            <input type="number" name="Produit" id="" ngModel><br>
+                            <input type="number" name="Qte" id="" ngModel ><br>
+                          </div>      -->
+                           <button class="btn btn-primary btn-block btn-lg" *ngIf="name.value ==='place' || t">Commander</button>
+                           <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
+                            <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> 
+                            <a href="#" [routerLink]='["/catalogue"]' class="ms-3">Back to shopping</a>
+                           </h5>
+                         </form>
+         
+                       </div>
+                     </div>
+         
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </section>
+</div>
+

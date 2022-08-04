@@ -1,0 +1,17 @@
+<div class="card ms-4 mt-3"  style="width: 10em;">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGaGKKV7wvTR1V26-3fLpRrYCfM9ygAApHEQ&usqp=CAU" class="card-img-top" alt="...">
+  <div class="card-body bg-warning rounded">   
+    <div class="row text-center d-flex" *ngIf="prod.Burger">
+        <h5 class="tra-text card-title col-2">{{ prod.qte }}</h5>
+        <h5 class="tra-text card-title col-10">{{ prod.Burger.nom }}</h5>
+    </div>
+  <div class="row text-center d-flex" *ngIf="prod.frite">
+      <h5 class="tra-text card-title col-2">{{ prod.qte }}</h5>
+      <h5 class="tra-text card-title col-10">{{ prod.frite.nom }}</h5>
+  </div>
+  <div class="row text-center d-flex" *ngIf="prod.Taille">
+    <h5 class="tra-text card-title col-2">{{ prod.qte }}</h5>
+    <h5 class="tra-text card-title col-10">{{ prod.Taille.libelle }}</h5>
+</div>
+  </div>
+</div>

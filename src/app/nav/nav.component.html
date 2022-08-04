@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-md  bg-danger ">
+    <div class="container-fluid">
+        <img id="img" class="rounded-circle" src="assets/images/Brazil.png" alt="">
+      <a class="navbar-brand" href="" [routerLink]="['/']">Brazil Burger</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse col-7 text-center row d-flex justify-content-around" id="navbarScroll">
+        <ul class=" navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item col-2">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item col-2">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown col-2">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Link
+            </a>
+            <ul class="dropdown-menu col-2" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown col-2">
+            <a class="nav-link" id="Panier"  id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" [routerLink]="['/panier']"><i class="fa fa-shopping-basket" aria-hidden="true">{{(item | async)?.length}}</i>
+                Panier</a>
+          </li>
+            <li class="nav-item dropdown col-2 offset-1">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Connexion
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href="#" [routerLink]="['/commandes']">Mes Commandes</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+              </li>
+        </ul>
+      </div>
+      <div class="col-3 ms-3 me-5">
+        <form class="row d-flex justify-content-around">
+          <input class="col-6 rounded border-warning" type="search" placeholder="Search">
+          <button class="col-3 me-4 btn btn-outline-warning" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+

@@ -1,0 +1,31 @@
+<!-- <div class="card ms-4 mt-3 row d-flex justify-content-between"  style="width: 18em;">
+   <div class="col">
+    <label for="{{ prod.id }}">
+        <img src="assets/images/Brazil.png" class="card-img-top" alt="">
+    </label>
+   </div>
+    <div class="col-md-6">
+        <p>{{ prod.Boisson?.nom }}</p>
+        <p>{{ prod.Taille?.libelle }}</p>
+        <input type="number" id="{{ prod.id }}" value="{{ prod.id }}" style="width: 50%;">
+    </div>
+</div> -->
+<div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{'data:image/jpg;base64,' + prod.Boisson.image }}" class="img-fluid rounded-start" alt="..." style="height:90%">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ prod.Boisson.nom }}</h5>
+          <p class="card-text">{{ prod.Taille?.libelle }}</p>
+          <p class="card-text"><small class="text-muted">
+            <input class="col-4 text-center btn btn-outline-primary" type="number" min="0" #val value="{{ prod.Boisson.qte }}" (change)="choix(prod,val)">
+           <!--  <input type="number"  min="0"  (value)="value" (onchange)="choix(value)"   style="width: 50%;">
+            <button class="btn btn-outline-warning ms-3" (click)="log(prod,value)" >Choix</button> -->
+          </small>
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>

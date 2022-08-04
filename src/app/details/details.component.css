@@ -1,0 +1,12 @@
+#detail p{
+    font-size: 18px;
+}
+
+#hidd{
+    overflow-y: scroll;
+    
+}
+
+#hidd::-webkit-scrollbar {
+    width: 20px;
+  }

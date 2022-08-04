@@ -1,0 +1,15 @@
+<div class="">
+    <h2 class="ms-5 mt-5"><i class="fa fa-table" aria-hidden="true"></i>Catalogue</h2>
+</div>
+<h3 class="text-center mt-3">Nos Menus</h3>    
+<div class="mt-1 d-flex flex-wrap">
+    <div class="mt-1 d-flex justify-content-around flex-wrap">
+        <app-cards *ngFor="let list of menus" [produit]="list" [type]="'m'"></app-cards>
+      </div>
+</div>
+    <h3 class="text-center mt-3">Nos Burgers</h3>
+<div class="mt-1 d-flex flex-wrap">
+    <div class="mt-1 d-flex justify-content-around flex-wrap">
+        <app-cards *ngFor="let list of burgers" [produit]="list" [type]="'b'"></app-cards>
+      </div>
+</div>
