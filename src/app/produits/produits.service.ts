@@ -4,6 +4,7 @@ import { forkJoin, Observable,tap } from 'rxjs';
 import { IProduit } from '../interfaces/produit';
 import { IBoissonTaille } from '../interfaces/BoissonTaille';
 import { IBTaille } from '../interfaces/Btaille';
+import { ICommande, IUser, IZone } from '../interfaces/Commande';
 
 @Injectable({
     providedIn: 'root',
@@ -19,6 +20,14 @@ export class ProduitsService{
     urlCommandes = "https://127.0.0.1:8000/api/commandes";
     urlCommande = "https://127.0.0.1:8000/api/clients/12/commandes";
     UrlBois = "https://127.0.0.1:8000/api/boissons";
+    UrlLivreurs = "https://127.0.0.1:8000/api/livreurs";
+
+    trouve=false;
+    taille:number[]=[]
+    tabQteBoisson :{
+        qte: number
+        som: number
+    }[]=[]
 
     public t:any=[]
     constructor(public _http: HttpClient) {
@@ -31,11 +40,16 @@ export class ProduitsService{
     public getProduits():Observable<IProduit[]>{    
         return this._http.get<IProduit[]>(this.https); 
     }
-    public getZones():Observable<any>{    
-      return this._http.get<any>(this.urlZones); 
+    public getZones():Observable<IZone[]>{    
+      return this._http.get<IZone[]>(this.urlZones); 
     }
-    public getZonesById(ref:number):Observable<any>{    
-        return this._http.get<any>(this.urlZones+'/'+ref); 
+
+    public getLivreurs():Observable<IUser[]>{    
+        return this._http.get<IUser[]>(this.UrlLivreurs);
+      }
+
+    public getZonesById(ref:number):Observable<IZone>{    
+        return this._http.get<IZone>(this.urlZones+'/'+ref); 
       }
     public getBoisson():Observable<IBTaille>{    
         return this._http.get<IBTaille>(this.urlTailleBoisson); 
@@ -55,6 +69,10 @@ export class ProduitsService{
 
     public getCommandes():Observable<any>{
         return this._http.get<any>(this.urlCommande);
+    }
+
+    public getCommande():Observable<ICommande[]>{
+        return this._http.get<ICommande[]>(this.urlCommandes);
     }
 
     getBois():Observable<IProduit[]>{

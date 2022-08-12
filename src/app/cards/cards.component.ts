@@ -4,7 +4,7 @@ import { IMenu } from '../interfaces/menus';
 import { PanierService } from '../services/panier.service';
 import { IProduit } from '../interfaces/produit';
 import { CardsService } from './cards.service';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCircle  } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cards',

@@ -30,6 +30,9 @@ export class PanierComponent implements OnInit {
   coffe = faCoffee;
   burg = faBurger;
   localisation = faLocationDot
+  Bois:IProduit[]=[]
+  Frites:IProduit[]=[]
+  zon:number=0
 
   
   UrlCommandes = "https://127.0.0.1:8000/api/commandes";
@@ -46,7 +49,21 @@ export class PanierComponent implements OnInit {
       next=>{
         this.z = next                     
       }
-    )    
+    )
+    
+    this.zone.getProduits().subscribe(
+      val=>{
+        val.forEach(e => {
+          if(e.Stock){
+            this.Bois.push(e)
+        }
+        if(e.pot){
+          this.Frites.push(e)
+        }
+      });
+        
+      }
+    )
 /*     this.commande(this.panier,this.selected);
  */  
 }
@@ -56,6 +73,9 @@ export class PanierComponent implements OnInit {
     var commandes:{}={}
     var produits:object[]=[]
     var ligne:{}={}
+    var zon:{}={
+      id:this.zon
+    }
     this.items$.subscribe(
       n=>{
         n.forEach(item=>{
@@ -69,11 +89,19 @@ export class PanierComponent implements OnInit {
         })
       }
     )
-    commandes={
-      Produits:produits
+    if(this.zon!=0){
+      commandes={
+        Produits:produits,
+        zone:zon
+      }
+      this.zon=0      
+    }else{
+      commandes={
+        Produits:produits
+      }
     }
     console.log(commandes);    
-    this._http.post<any>(this.UrlCommandes,commandes).subscribe()    
+   this._http.post<any>(this.UrlCommandes,commandes).subscribe()    
   }
 /* 
     this.items.subscribe.forEach(e=>{
@@ -128,8 +156,10 @@ export class PanierComponent implements OnInit {
   selec(selec:any){
     if(selec.value!=0){
       this.selected =selec.value;
+      
       this.zone.getZonesById(this.selected).subscribe(
         nex=>{
+          this.zon=nex.id
           this.livraison = nex.prix;
         }
       )

@@ -7,17 +7,27 @@ import { MenusComponent } from './menus/menus.component';
 import { DetailsComponent } from './details/details.component';
 import { PanierComponent } from './panier/panier.component';
 import { CommandesComponent } from './commandes/commandes.component';
+import { CommandeslistComponent } from './commandeslist/commandeslist.component';
+import { CommandeComponent } from './commande/commande.component';
+import { DetailscommandeComponent } from './detailscommande/detailscommande.component';
 
 
 
 const routes: Routes = [
   { path: '', component: CatalogueComponent, },
+/* { path: 'Admin',
+  loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  }, */
   { path: 'catalogue', component: CatalogueComponent, },
   { path: 'panier', component: PanierComponent, },
-  { path: 'commandes', component: CommandesComponent, },
+  { path: 'commande', component: CommandeComponent, },
+  { path: 'commande/:id', component:DetailscommandeComponent, },
+  { path: 'commandes', component: CommandesComponent, data: { animation: 'openClosePage' }},
+  { path: 'commandes/:id', component: CommandeslistComponent, },
   { path: 'burgers', component: BurgersComponent, },
   { path: 'menus', component: MenusComponent, },
   { path: 'produits/:id', component: DetailsComponent, },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: '**', component: CatalogueComponent }
 ];
 @NgModule({
@@ -27,7 +37,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
   ],
   exports:[
-    RouterModule
+    RouterModule,
   ]
 })
 export class AppRoutingModule { }

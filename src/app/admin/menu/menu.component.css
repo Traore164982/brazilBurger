@@ -1,0 +1,44 @@
+section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu{
+    list-style: none;
+    width: 250px;
+}
+
+#menu li {
+    margin: 8px 0;
+    position: relative;
+    background-color: #2b2b2b;
+    border-radius: 2px;
+    overflow: hidden;
+}
+#menu li::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: red;
+    transition: 0.3s all ease-in-out;
+}
+
+#menu li:hover::before{
+  border-radius:0px 50px 50px 0;
+  width: 110%;
+}
+#menu li a{
+    display: block;
+    padding: 10px 20px;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;   
+}

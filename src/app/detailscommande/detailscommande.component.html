@@ -1,0 +1,28 @@
+<div class="container">
+    <h2 class="text-center mt-3">Details de la Commande</h2>
+    <div class="container row border-2" style="height: 70vh;">
+        <div class="col-md-6 row d-flex align-items-center">
+            <div>
+                <h3>Infos</h3>
+                <p>Etat : {{ comm.etat}}</p>
+                <p>Date Emise : {{ comm.date | date:'medium'}}</p>
+                <p>Nombre de Produits : {{ comm.Produits.length}}</p>
+            </div>
+        </div>
+        <div class="col-md-6 row d-flex align-items-center">
+            <table class="w-100 text-center" >
+                <h4>Produits</h4>
+                <tr class="border-2 row text-center">
+                    <td class="col-md-4">Image</td>
+                    <td class="col-md-4">Nom</td>
+                    <td class="col-md-4">Quantité</td>
+                </tr>
+                <tr *ngFor="let t of comm.Produits" class="row d-flex align-items-center">
+                    <td class="col-md-4"><img class="img-fluid" src="{{'data:image/jpg;base64,' + t.Produit.image}}" style="max-height:100px ;" alt=""></td>
+                    <td class="col-md-4">{{t.Produit.nom }}</td>
+                    <td class="text-center col-md-4">{{t.quantite }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

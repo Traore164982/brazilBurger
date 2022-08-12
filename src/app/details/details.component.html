@@ -43,27 +43,36 @@
                         <app-cards-details *ngFor="let card of elem.menuFrites" [prod]="card"></app-cards-details>
                     </div>
                 </div>
-                <div class="col-4 bg-warning d-flex flex-wrap row" id="hidd"  *ngIf="elem.menuTailles?.length!=0" style="height:auto ;">
+                <div class="col-4 bg-warning row"  *ngIf="elem.menuTailles?.length!=0" style="height:auto ;">
                     <div class="col-12 text-center">
                         <h5 class="col">Choix des Boissons</h5>
                     </div>
-                        <app-cards-boissons *ngFor="let card of id" [prod]="card" (boisson)="choix($event)" ></app-cards-boissons>
+                        <app-cards-boissons *ngFor="let card of id" [prod]="card"></app-cards-boissons>
+               </div>
+               <div class="col-4 bg-warning row"  *ngIf="elem.menuTailles?.length==0" style="height:90vh; overflow-y: scroll;">
+                <h5>Produits Similaires</h5>
+               <div class="d-flex flex-wrap" style="overflow-y: hidden;">
+                   <app-cards *ngFor="let sim of similaires" [produit]="sim" [type]="'m'"></app-cards>
+               </div>
                </div>
                 <div>
                 </div>
             </div>
-            <div class="row  d-flex justify-content-between bg-dark">
-                <h3>Nos Compléments</h3>
-                <h1>Nos Boissons</h1>
-                <div class="d-flex flex-wrap bg-danger">
+            <div class="row  d-flex justify-content-between" style="height: auto; margin-left: 0.5%; margin-bottom:2%">
+                <h3 class="text-center">Nos Compléments</h3>
+                <h5 class="mt-4 mb-3">Nos Boissons</h5>
+                <div class="d-flex flex-wrap bg-danger mt-4 mb-4">
                     <app-cards *ngFor="let card of Bois" [produit]="card" ></app-cards>
                 </div>
-                <h1>Nos Frites</h1>
-                <div class="d-flex flex-wrap bg-danger">
+                <h5>Nos Frites</h5>
+                <div class="d-flex flex-wrap bg-danger mt-4 mb-4">
                     <app-cards *ngFor="let card of Frites" [produit]="card"></app-cards>
                 </div>
-                <div>
-
+                <div *ngIf="elem.menuTailles?.length!=0">
+                    <h5>Produits Similaires</h5>
+                        <div class="d-flex flex-wrap" style="overflow-y: hidden;">
+                            <app-cards *ngFor="let sim of similaires" [produit]="sim" [type]="'m'"></app-cards>
+                        </div>
                 </div>
             </div>
     </div>

@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { IBoisson } from '../interfaces/Boisson';
 import { IBoissonTaille } from '../interfaces/BoissonTaille';
 import { IProduit } from '../interfaces/produit';
+import { ProduitsService } from '../produits/produits.service';
 
 @Component({
   selector: 'app-cards-boissons',
@@ -19,24 +20,39 @@ export class CardsBoissonsComponent implements OnInit {
   @Input()
   value!:any;
 
-  @Input()
-  name = new FormControl(1);
+  qte:number=0;
+
+
   
 /* 
-  dec() { this.add(this.prod,-1); }
+  dec() { this.add(this.prod,-1); } 
   inc() { this.add(this.prod,+1); } */
-  @Output()
-  boisson:EventEmitter<IBoissonTaille> = new EventEmitter<IBoissonTaille>;
+/*   @Output()
+  boisson:EventEmitter<IBoissonTaille> = new EventEmitter<IBoissonTaille>; */
 
-  constructor() { }
+  constructor(private produitService:ProduitsService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {        
   }
 
-  choix(prod:IBoissonTaille,val:any){
+  update(n:number){
+    if ((this.qte == 0 && n<0) || (this.produitService.tabQteBoisson[this.prod.Taille.id].som==this.produitService.tabQteBoisson[this.prod.Taille.id].qte && n>0)) {
+     this.produitService.trouve=true
+      return;
+    }    
+      this.qte+=n;
+      this.produitService.tabQteBoisson[this.prod.Taille.id].som+=n;
+    }
+     /* if((this.qte == 0 && n<0) || (this.produitService.tabQteBoisson[this.prod.Taille.id].som == this.produitService.tabQteBoisson[this.prod.Taille.id] && n>0 )) {
+      return;      
+    } */
+
+  /* choix(prod:IBoissonTaille,val:any){
     prod.Boisson.qte = +val.value;
     this.boisson.emit(prod)
-  }
+  } */
+
+
 
   /*
    choix(prod:IBoissonTaille){

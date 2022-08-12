@@ -1,0 +1,19 @@
+<div class="h-100">
+    <h4>Gestion</h4>
+    <section class="navbar">
+        <ul id="menu">
+            <li><a href="#"  routerLinkActive="active">Commandes</a></li>
+            <li><a href="#" routerLinkActive="active">Clients</a></li>
+            <li><a href="#" [routerLink]="['dashboard']" routerLinkActive="active">Dashboard</a></li>
+            <li><a href="#" [routerLink]="['livraisons']" routerLinkActive="active">Livraisons</a></li>
+            <li class="nav-item dropdown"><a href="#" [routerLink]="['produits']" class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produits</a>
+                <ul class="dropdown-menu col-2" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+            </li>
+        </ul>
+    </section>
+</div>

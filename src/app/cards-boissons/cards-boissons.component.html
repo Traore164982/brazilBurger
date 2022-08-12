@@ -10,7 +10,7 @@
         <input type="number" id="{{ prod.id }}" value="{{ prod.id }}" style="width: 50%;">
     </div>
 </div> -->
-<div class="card mb-3">
+<!-- <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="{{'data:image/jpg;base64,' + prod.Boisson.image }}" class="img-fluid rounded-start" alt="..." style="height:90%">
@@ -20,12 +20,33 @@
           <h5 class="card-title">{{ prod.Boisson.nom }}</h5>
           <p class="card-text">{{ prod.Taille?.libelle }}</p>
           <p class="card-text"><small class="text-muted">
-            <input class="col-4 text-center btn btn-outline-primary" type="number" min="0" #val value="{{ prod.Boisson.qte }}" (change)="choix(prod,val)">
-           <!--  <input type="number"  min="0"  (value)="value" (onchange)="choix(value)"   style="width: 50%;">
-            <button class="btn btn-outline-warning ms-3" (click)="log(prod,value)" >Choix</button> -->
+            <input class="col-4 text-center btn btn-outline-primary" type="number" min="0" #val value="{{ prod.Boisson.qte }}">
           </small>
         </p>
         </div>
       </div>
     </div>
+  </div> -->
+
+<!-- <div class="text-center card bg-danger row d-flex" style="width:9rem;height: 9rem;">
+  <div class="card-body row d-flex justify-content-center h-75">
+    <span class="col-2 bg-primary text-center rounded-circle">-</span>
+    <input class="col-8 h-100 border-0" type="text" name="" id="">
+    <span class="col-2 bg-primary rounded-circle">+</span>
+    </div>
+      <div class="col mt-2">
+        <p>nom</p>
+      </div>
+</div> -->
+<h6></h6>
+<div class="card" style="width:8rem; height: 10rem;">
+  <div class="row d-flex justify-content-center h-75" style="align-items: center;">
+    <span class="col-2 bg-primary h-25 text-center rounded-circle" (click)="update(-1)">-</span>
+    <input class="col-6 h-100 border-0 text-center" type="text" name="" id="" value="{{ qte }}" style="font-size: 4rem;">
+    <span class="col-2 bg-primary h-25 rounded-circle" (click)="update(1)">+</span>
   </div>
+  <div class="card-body">
+    <p class="card-text text-center">{{ prod.Boisson.nom}}</p>
+    <p class="card-text text-center">{{ prod.Taille.libelle}}</p>
+  </div>
+</div>

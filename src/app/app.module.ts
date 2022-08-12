@@ -21,6 +21,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardsBoissonsComponent } from './cards-boissons/cards-boissons.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommandeslistComponent } from './commandeslist/commandeslist.component';
+import { BtnComponent } from './btn/btn.component';
+import { CommandeComponent } from './commande/commande.component';
+import { DetailscommandeComponent } from './detailscommande/detailscommande.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CardsDetails2Component,
     CardsBoissonsComponent,
     CommandesComponent,
+    CommandeslistComponent,
+    BtnComponent,
+    CommandeComponent,
+    DetailscommandeComponent,
   ],
   imports: [
     BrowserModule,

@@ -37,11 +37,13 @@ export class DetailsComponent implements OnInit {
   Bois:IProduit[]=[];
   Frites:IProduit[]=[];
   similaires:IProduit[]=[];
+
   test:boolean = false;
 
   Boisson : IBoissonTaille[] = [];
 
   constructor(private produitsService: ProduitsService , private active: ActivatedRoute,private product:CardsService) {
+  
   }
   
   ngOnInit(): void {
@@ -49,7 +51,10 @@ export class DetailsComponent implements OnInit {
       nex=>{
         this.Bois=nex;
       }
-    ) */
+    ) */         
+   this.test=this.produitsService.trouve;
+  this.choix()
+    
     this.produitsService.getProduits().subscribe(
       val=>{
         val.forEach(e => {
@@ -95,61 +100,27 @@ export class DetailsComponent implements OnInit {
     
     this.produitsService.getProduitsById(this.ref).subscribe(
       next =>{
-        console.log(next);
         if (!next.remise && !next.Stock && !next.pot) {
           this.test=true;
         }
-        if (next.remise) {
+        if (!(next.remise && next.Stock && next.pot)) {
+          this.similaires =[]          
           this.produitsService.getProduits().subscribe(
             n=>{
-              n.forEach(element => {
-                if(element.remise){
-                  element.type=="m";
+              this.similaires=[]
+              n.forEach(element => {                
+                if(!element.remise && !element.menuBurgers && !element.pot && !element.Stock){
                   this.similaires.push(element);
+                }else{
+                  if (next.menuBurgers) {
+                    if (element.menuBurgers && !element.pot && !element.Stock) {
+                     if (element.remise!=null) {
+                        this.similaires.push(element)             
+                     }
+                    }
+                  }
                 }
-              });
-              console.log(n);
-              
-            }
-          )
-        }
-        if (next.Stock) {
-          this.produitsService.getProduits().subscribe(
-            n=>{
-              n.forEach(element => {
-                if(element.Stock){
-                  this.similaires.push(element);
-                }
-              });
-              console.log(n);
-              
-            }
-          )
-        }
-        if (next.remise) {
-          this.produitsService.getProduits().subscribe(
-            n=>{
-              n.forEach(element => {
-                if(element.remise){
-                  this.similaires.push(element);
-                }
-              });
-              console.log(n);
-              
-            }
-          )
-        }
-
-        if (!next.remise && !next.Stock && !next.pot) {
-          this.produitsService.getProduits().subscribe(
-            n=>{
-              n.forEach(element => {
-                if(element.remise){
-                  this.similaires.push(element);
-                }
-              });
-              console.log(n);
-              
+              });              
             }
           )
         }
@@ -159,18 +130,27 @@ export class DetailsComponent implements OnInit {
           this.test=true;
         }                       
         this.elem.menuTailles?.forEach(elem => {
-          this.boissonId.push(elem);         
+          this.boissonId.push(elem);
+          this.produitsService.tabQteBoisson[elem.Taille.id]= {qte:elem.qte,som:0}
+          this.produitsService.taille.push(elem.Taille.id);
           this.produitsService.getBoissons().subscribe(
             nex =>{
               nex.forEach(ele=>{
-                if (elem.Taille?.id == ele.Taille?.id) {
-                  console.log(ele.Boisson);
+                if ((elem.Taille?.id == ele.Taille?.id) && ele.qte>elem.qte) {
                   this.id.push(ele)               
                 }
               });
             }
           );
-       /*    if(elem.Taille?.libelle=="Canette"){
+       /* 
+       {
+        qte: number;
+        som: number
+    }
+
+
+
+       if(elem.Taille?.libelle=="Canette"){
             this.produitsService.getBoisson().subscribe(
               nex=>{      
                 nex.canette.forEach(e=>{
@@ -223,8 +203,7 @@ export class DetailsComponent implements OnInit {
     produit.qte=1;
     this.product.produit(produit,ref);
   }
-
-  choix(prod:IBoissonTaille){
+  choix(){
     var fixe = 0;
     var trouve = false;
     var sompm =0;
@@ -233,7 +212,9 @@ export class DetailsComponent implements OnInit {
     var somp=0
     var somg=0
     var somc=0
-    if (this.Boisson.length==0) {
+    console.log(this.produitsService.tabQteBoisson);
+    
+    /* if (this.Boisson.length==0) {
       this.Boisson.push(prod)
       this.boissonId.forEach(element => {
         if(element.Taille?.id==4){
@@ -308,23 +289,6 @@ export class DetailsComponent implements OnInit {
       }else{
         this.test = false
       }
-      
-      
-     /*  this.elem.menuTailles?.forEach(elem =>{
-        console.log(elem.Taille?.id);
-      for (let index = 0; index < this.Boisson.length; index++) {
-        const element = this.Boisson[index];
-        if(element.Taille?.id === prod.Taille?.id) {
-              if (elem.Taille?.id==4) {
-                sompm+=prod.Boisson.qte;
-                console.log(sompm);
-                
-              }
-              
-    
-    }}
-      }) */
-    }
-  }
-
+    }*/
+  } 
 }

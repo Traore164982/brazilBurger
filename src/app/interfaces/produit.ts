@@ -5,7 +5,7 @@ import { IMenu } from "./menus";
 import { ITaille } from "./taille";
 
 export interface IProduit{
-    id?: number,
+    id: number,
     nom:string,
     prix:string,
     image:string,

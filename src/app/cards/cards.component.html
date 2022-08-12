@@ -1,15 +1,15 @@
-<div class="card ms-4 mt-3"  style="width: 10rem;">
+<div class="card ms-4 mt-3"  style="width: 16rem;">
         <div>
             <span class="float-end shadow-end rounded-start p-2 bg-warning  col-4 p-1 mt-2">{{ produit.prix}} Frs</span>
         </div>
-      <img src="{{'data:image/jpg;base64,' + produit.image}}" class="card-img-top" alt="...">
-      <div class="card-body bg-warning rounded">
+      <img src="{{'data:image/jpg;base64,' + produit.image}}" class="card-img-top" alt="..." style="max-height:30%">
+      <div class="card-body bg-warning rounded" style="max-height: 40%;">
         <div class="row text-center">
             <h5 class="tra-text card-title col-12 text-center text-wrap">{{ produit.nom }}</h5>
           <div class="d-flex justify-content-between align-items-center">
               <button class="btn  btn-danger" (click)="addProduit(produit,1)" *ngIf="type !='m'">Ajouter</button>
-              <button class="btn  btn-danger rounded-circle" *ngIf="type =='m'|| type=='b'" [routerLink]="['/produits',produit.id]"><fa-icon [icon]="fa" ></fa-icon>
-              </button>
+              <button class="btn  btn-danger rounded-circle" *ngIf="type =='m'|| type=='b'" [routerLink]="['/produits',produit.id]">>
+               </button>
           </div>
         </div>
         <div>
