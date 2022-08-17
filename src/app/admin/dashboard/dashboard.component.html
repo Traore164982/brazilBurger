@@ -26,22 +26,23 @@
     <div class="row text-center border ms-2">
         <div class="col-md-3">
             <div class="mb-2 bg-warning" style="height: 70px; width: 80%; margin-left:10%;">
-                <p>Reçues</p>
+                <p > {{nombreCommande}} Reçues</p>
             </div>
         </div>
         <div class="col-md-3">
             <div class="mb-2 bg-success" style="height: 70px; width: 80%; margin-left:10%;">
-                <p>Validées</p>
+                <p>{{valide}} Validées</p>
+                <p>{{attente}} En Attente</p>
             </div>
         </div>
         <div class="col-md-3">
             <div class="mb-2 bg-primary" style="height: 70px; width: 80%; margin-left:10%;">
-                <p>En Cours</p>
+                <p> {{cours}} En Cours</p>
             </div>
         </div>
         <div class="col-md-3">
             <div class="mb-2 bg-danger" style="height: 70px; width: 80%; margin-left:10%;">
-                <p>Annulées</p>
+                <p>{{annule}} Annulées</p>
             </div>
         </div>
     </div>

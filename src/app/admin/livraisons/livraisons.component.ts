@@ -20,6 +20,7 @@ export class LivraisonsComponent implements OnInit {
   livrer:ICommande[] = []
   livreur:number=0
   g!:IZone
+  UrlCommandes = "https://127.0.0.1:8000/api/commandes";
   form !:FormGroup;
   UrlLivraisons:string="https://127.0.0.1:8000/api/livraisons";
 
@@ -39,6 +40,7 @@ export class LivraisonsComponent implements OnInit {
     
     const today = `${year}-${month}-${day}`    
     this.completeDate = today;
+
     this.prod.getCommande().subscribe(
       next=>{
           next.forEach(e=>{
@@ -51,15 +53,21 @@ export class LivraisonsComponent implements OnInit {
     this.prod.getZones().subscribe(zones=>{
       zones.forEach(zo=>{
         zo.commandes.forEach(r=>{
+          var trouve=false
           if(r.date.toString().substring(0,10)== this.completeDate){
             if(this.z.length==0){
               this.z.push(zo)
             }
             this.z.forEach(p=>{
               if(zo.id!=p.id){
-                this.z.push(zo)    
+                trouve=true
+              }else{
+                trouve=false
               }
             })
+            if (trouve) {
+              this.z.push(zo)    
+            }
           }
         })
       })
@@ -102,7 +110,7 @@ export class LivraisonsComponent implements OnInit {
           this.prod.getCommande().subscribe(
             next=>{
               next.forEach(e=>{
-                if(e.date.toString().substring(0,10)== this.completeDate && e.zone && e.zone.id == selec.value){
+                if(e.date.toString().substring(0,10)== this.completeDate && e.zone && e.zone.id == selec.value && e.etat=="Validée"){
                   this.deliv.push(e);
                 }
               })        
@@ -126,7 +134,7 @@ export class LivraisonsComponent implements OnInit {
         }
       }
     }
-    commande(){
+    li(){
       var livraisons:{}={}
       var commandes:object[]=[]
       var ligne:{}={}
@@ -143,6 +151,15 @@ export class LivraisonsComponent implements OnInit {
       commandes:commandes,
       livreur:livreur
     }
-    this._http.post<any>(this.UrlLivraisons,livraisons).subscribe()    
+    this.livrer.forEach(element => {
+      var update={
+        etat:"Livraison"
+      }
+      this._http.put<any>(this.UrlCommandes+'/'+element.id,update).subscribe()
+      console.log(element);
+    });
+    this._http.post<any>(this.UrlLivraisons,livraisons).subscribe()
+    this.livrer=[];
+    window.location.reload(); 
   }
 }

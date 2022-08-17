@@ -10,7 +10,7 @@ import { BehaviorSubject, take,map } from 'rxjs';
 
 export class CardsService{      
     
-    private itemsSubject = new BehaviorSubject<IProduit[]>([]);
+    itemsSubject = new BehaviorSubject<IProduit[]>([]);
     
     items= this.itemsSubject.asObservable();
      i:number=1;

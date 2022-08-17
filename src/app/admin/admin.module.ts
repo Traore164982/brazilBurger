@@ -8,7 +8,9 @@ import { ComComponent } from './com/com.component';
 import { MenuComponent } from './menu/menu.component';
 import { LivraisonsComponent } from './livraisons/livraisons.component';
 import { ProdComponent } from './prod/prod.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ZoneComponent } from './zone/zone.component';
+import { LivreurComponent } from './livreur/livreur.component';
 
 
 @NgModule({
@@ -18,13 +20,19 @@ import { FormsModule } from '@angular/forms';
     ComComponent,
     MenuComponent,
     LivraisonsComponent,
-    ProdComponent
+    ProdComponent,
+    ZoneComponent,
+    LivreurComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-
+    ReactiveFormsModule
+  ],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

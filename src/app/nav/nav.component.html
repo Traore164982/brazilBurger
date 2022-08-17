@@ -8,11 +8,11 @@
       <div class="collapse navbar-collapse col-7 text-center row d-flex justify-content-around" id="navbarScroll">
         <ul class=" navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item col-2">
-            <a class="nav-link " aria-current="page" routerLinkActive="active" href="#">Home</a>
+            <a class="nav-link " aria-current="page" routerLinkActive="active" href="#" [routerLink]="['/admin/dashboard']">Admin</a>
           </li>
-          <li class="nav-item col-2">
+<!--           <li class="nav-item col-2">
             <a class="nav-link" href="#" [routerLink]="['/commande']" routerLinkActive="active" routerLinkActive="active">Commandes</a>
-          </li>
+          </li> -->
           <li class="nav-item dropdown col-2">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" routerLinkActive="active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Link
@@ -43,7 +43,7 @@
       </div>
       <div class="col-3 ms-3 me-5">
         <form class="row d-flex justify-content-around">
-          <input class="col-6 rounded border-warning" type="search" #search [disabled]="searchText" (keyup.enter)="onEnter(search)" placeholder="Filtre">
+          <input class="col-6 rounded border-warning" type="search" #search [disabled]="searchText" (keyup.enter)="onEnter(search)" placeholder="Rechercher">
           <button class="col-3 me-4 btn btn-outline-warning" (click)="Drop()" >Filtre</button>
         </form>
       </div>

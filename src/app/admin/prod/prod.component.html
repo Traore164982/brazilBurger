@@ -1,1 +1,59 @@
-<p>prod works!</p>
+<div class="text-center row mt-3">
+    <h3 class="" style="background: linear-gradient(120deg,red 5%,Yellow 25%,red 55%,Yellow 80%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;text-decoration: underline; " >Bienvenue au formulaire de Création</h3>
+    <div class="col-md-3">
+        <div  class="mt-3 mb-2 bg-warning rounded row d-flex justify-content-center" #Zone id="zone">
+            <h6 class="mb-3 mt-3">Qu'ajoutez-vous</h6>
+            <select class="form-select mb-3 w-75" aria-label="Disabled select example" #select (change)="choice(select)">
+              <option selected value="">Selectionner Votre Produit ...</option>
+               <option *ngFor="let v of choix" value="{{v}}">{{v}}</option>
+             </select>
+          </div>
+          <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGaGKKV7wvTR1V26-3fLpRrYCfM9ygAApHEQ&usqp=CAU" alt="" *ngIf="choi=='Burger'">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7fNfkMivVQfhXTuDVaG7rigUnsxVwreqWew&usqp=CAU" alt="" *ngIf="choi=='Menu'">
+                <img src="data:image/jpeg;base64,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" alt="" *ngIf="choi=='Complément'">
+          </div>
+    </div>
+    <div class="col-md-9">
+        <h5 *ngIf="choi!=''">{{choi}}</h5>
+        <div class="card">
+            <div class="card-header text-white bg-warning">
+                <h6>Créer un {{choi}}</h6>
+            </div>
+            <img [src]="imageShow" height="20%" width="20%" *ngIf="imageShow"> <br/>
+            <div class="card-body">
+                <form novalidate [formGroup]="form" (ngSubmit)="ajout()" enctype="multipart/form-data">
+                    <div class="form-group row mb-2">
+                        <label for="nom" class="col-md-2 col-form-label">Nom :</label>
+                        <div class="col-md-8">
+                            <input type="text" id="nom" formControlName="nom" class="form-control" placeholder="Nom(Obligatoire)">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="prix" class="col-md-2 col-form-label">Prix :</label>
+                        <div class="col-md-8">
+                            <input type="number" id="prix" formControlName="prix" class="form-control" placeholder="Prix(Obligatoire)">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="Image" class="col-md-2 col-form-label">Image :</label>
+                        <div class="col-md-8">
+                            <input type="file" (change)="onFileChange($event)" id="Image" class="" accept="image/*" formControlName="Image" class="form-control" placeholder="Nom">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-3 mb-1">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-outline-warning" type="submit">Ajouter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <pre>
+                {{form.value | json}}
+            </pre>
+        </div>
+    </div>
+</div>

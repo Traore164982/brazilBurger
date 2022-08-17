@@ -1,29 +1,30 @@
-<div class="container row">
+<div class="container row" style="height:80vh; overflow-y: scroll;">
     <div class="mt-3 mb-3 text-center">
         <h2 class="text-warning text-decoration-underline">Livraisons</h2>
 <!--         <input class="w-25 text-center" type="date" placeholder="date" name="date" id="" [value]="completeDate"  [max]='completeDate' #date (change)="recup(date)">
  -->    </div>
 <div class="col-md-9">
+    <div class="text-center" >
+        <h4 class="text-center text-danger mt-5" *ngIf="deliv.length == 0">Aucune Livraison disponible</h4>
+        <h4 class="text-center text-danger" *ngIf="deliv.length == 0">Veuillez valider les Commandes de cette Zone</h4>
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBYWFRgWEhUYGRgYHBgZGBgaGRgYGBgYGhkZGhgYGBgcIS4lHB4rHxoYJjgmKy8xNTU1HSQ7QDs0Py40NTEBDAwMEA8QHhISHz0rJSs0NDQ0NDU0NDQ0NDQ0NDQ0NDQxNDQ0NDQ0NDQ0NDQ0NDQ0NDQxNDQxMTQ0NDQ0NDQ0NP/AABEIAPIA0AMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAD0QAAIBAgMFBQYEBQQCAwAAAAECAAMRBBIhBTFBUWEGIjJxgRNSkaGxwQdCctEjYoKSwhQz4fBjsiRD4v/EABkBAQADAQEAAAAAAAAAAAAAAAABAgQDBf/EACIRAQADAAICAwEAAwAAAAAAAAABAhEDIRIxBEFRIhMUYf/aAAwDAQACEQMRAD8A+xREh+0m0jRpdzxucq9Obeg+0ra0VjZWpWbWise5a9tdokod1Rnf3QdF/UeHlvlZr9pMU+5lQclUfVryPp0uJ1J1JOpJ5k85uCTFfltb7x7PF8bjpHcbP/XkbWxSm4rNqb62P1Hyndh+1uIXxhXHUZT8R+0i8RiFGg1PT95yvWvwEpHJavqXefj8do7rD6BsntPRrEKbo53K25jyVtxPTfJ6fG2F5dOzvaZQgTEvZl0DEGzLwueBG7rvmni596s835Pwpp/VO4/FwiaqFdGGZGDDmpBHym2aWCYwiIhBERAREQEREBERAREQEREBERASl9s6l61NfdUt6sbf4y6Sr7X2U1bEli2VFRASPExJY2Xl5zny1m1cho+LetL+VvqJVerXVN+87gNSfIDUzhxOJfilS3LLl+JJv8p9Fw2zqVMfw0A5nex82OpmrF4VWGoE5xwR9tFvnW3+Yx8rq7RZd1H4v+wnFU21U4Ig/uP3l32psZTewtKnj9mlTuj/AA1j6V/2+SftFVNtV+BQeSD7yNxu2sSBcVCPJVH2km2FmG2YHGTQZtATuBOgJkxSv4rPPefuXLsvtBiVIZKzq3MWHxFtZ9A2L+JNRbLikDj30srDqVOh9LTr2P8AhNQQA4iu9Q6XVQKafHVj8ZcNndmsLQt7KggI/MRmb+5rmWikx66Uty1tHcaksJiVqIjpfK6hluCpsRcXB1E3RE6sxERAREQEREBERAREQEREBERATjxpsR1E7Jz46nmTTeNf3gcReaneaGrTS9aB5xIvILHYYG8k61eR9etKytCAxGBF5pp4XvL+pfqJJ1nE6Ng4X2uJRQNFYO36U1+th6xELTPT6bEzMSzmREQEREBERAREQEREBERAREQEREBERAh9p7OOrUxfiy/df2kHUYy6GR+OwtN7k6NzXj584FLxDmRtepLZidnKRILGbJ5EysrRKHpo7uERSzNuUbz/AMdZ9F7NbEGHTvWNRrF24Dki9B9Zu2HsujRQGkAxYAlzqzevAdJKSYhEyRESUEREAZz0cZTY2VlJ5X1+HGRu0MZmJRT3NzH3j7o6c+cjK6X4TPfn8ZyO3WvFMxsrbEqtDGVE8Lm3Ju8Pnr8DO6ntwjxpfqp/xb95Nees++kW4rQnInDgtr0avgcE+6dG+BndO0WiY2FJjPZERJQREQEREBERATxUe26eyZxVnga6tWafaXnNiakxgDmUEyEt7icdanJBlnM6wlw0K70z3GsOKnVT6SZwu2FawcZTzGq/uJFVknK1QDfCMXMRIzYVcshB/IbDyIuBJOSgkRtLHXuiHozD/wBR9zNm0sda6IdfzN7vQdfpIpRwmbm5s/mHbjpvcsdJkiDExtDndbTE3uNJovAicTT9m4cDuneOHUfeTOGxrqAUc24A95fgd3pNNSkGFm3TxQohBYE24X4RE2rOwiYifaewO2CzBXVRfTMDYX4XB/eTUpZEseycZnWzeJdD1HAzZw8s26s4clM7hIRETS4kREBERA1120kVia0ka7gHXlNZCneB8oFX2limyPkBYhWaw5Aan0klsprovkPpJJcGgzZUAzqVbqP+mceHwbU1C+IDj+4kJb2mlxNhaa2hLmqiQ1b/AHNeA+pk3UkFiqTFzlBOg+pgWLsrqlQ/zAfBROzaWOy9xD3jvPuj95H7Pq+xoKikGo12boTz9LAeU0E/uSd5PEmcOblzqHSlN7liJkRMUtBMXmTPMDM0VFtN88ut4GiYa804mvky91mLHKAtr3ysx3kDcpjD4pXAsbX3A6HrYceMYjW682YTElHDDhvHMcRPE8mTEzE6TGxi5UqoZQym4IuJ6kBsTGZTkY6Hw9Dy9ZPz0eO3lXWS1fGcIiJdUiIgacVh1dcrXHIjQg9JFnZtZTdKisOTAqfiLiTUQOLDhgozizcba/OZrNZSZnEuFJJNha5JkDtTazquemA6Aa5dWA94cx5QKrtDtm4FVEyBkcorm1gLm+h46Gd/ZjHYt0L1AtdGF0K1KeckbxbS4+cqu1djDEVGfCL4xnqKCAhYnRhfQMbnTzMk+y3YsUWL4llYkdxFLWQnUtn0ObhpunCtbeWy3cl+OePKxk/f6s+G21SqZluUdDldKncdT5HeOonMKjmsMlitu8b3APDdxnnbWyVxNJwwLVUsQ4OV3UagFhxKhlvzVTxnPsZURQlMkpYEFtWN9e8eJ/aTy2mtemWkRM5KdX/p5z1PCGephamTMXgzzIGYMXgwAmmvXtoql2tfKDbTmTw6c5qxeLCAhfF5XC8deuUEheNpFVsLUqOyC6Gk9KtRqi7JUUghvacGOjDKNwKmWrXe0TLvx+GWqqOpYgENZWZSykbtD4tQRfiJCU3VUzhnUpUIBK51YZ2psygqLOQxuL8ONtLFSGUtp3ScwHuk+MeROvqZz4jCq+/OLkMQpsCQQQSNddN41kxOdImHvC4pXBysDawOU3GouPLTgdRNA2lTzFGYKw3qSMw9AbzbhqRUuXcsWI1IAsBfKDYamx38bTi2ls9HZans1d0IZWOhUg66g3ykXBHkZERG9k7jvTELfRhcdbH5y27LxftEv+YaH9/WUBsOxYMWqBQMuQgOm4lXtYnMpNrjeJs2HtNsPXs+Yo2hJGlup016nl1nbit4ypeNh9HiYRgQCNx1EzNrMREQERECP2xSYpmS114H8w5ecoLYas1QrSV6VM3LFxYK3/jW+t+W6fRsee56iV3GmBG4KgtFAiXtcsSd7MdSTabv9ROOvUnMa8hZKU8TkdXvYeFjyViO9/SwVvIGe6OzrPiEUWzKtakORDMHQeRJHqJCvXuLHcd8m9n40tTSqNXoMQ/NlAAcf1IUfzUyt42CJyXrDVLgGb7zXjKYSqQvgcZ1PCzam3r9RMq08+0eM41VnY1smDF4lVmJy1MTdgiHUkgt7uh0HAsbEdLa66Tk23jnpoxp03dgtwqeJrnLYW1AGmYjUAi2+45OzmFqtSD4u4dnZwlsuRO6FQDgLqG+HWWivWo3vGzZj1qj1AyBMOpKoTf2ruGv7S5OguLg2N5NooUBVFgNw5CYi8TJEPDjWeZtM1mVSTyRMxA8ZByE5sfQd0tRfI9xYtqpG4hrg6TrMwRJiUSs+ycK1KkqVHzsN7WCi54KBuE7ZF7FxmZcrHvLu6r/AMSUno0mJrEwyWiYnsiIl1SIiBy7Q8Pr+8ruPaWDaJ0HrK1tS9jaBBYyvaR74jrNv+jerVSmptnYLfkOJt0F5wbW2PVo4hqDNcaMr2tmQ7jbnvB8pCXtq95Y+yasA78CyIRwuQ2QnzN0PR+k5dm7FRRmcZj13fCWPYdNSXpEWDrw5rxHUXv6QS8VKV6TINWw5D0+bUH1X4C6+aTQlQWuToBcnpvJnP2kwD1aQy1noOjZHqJe4ps2V7gEXAez2voHE1Y+kaFN6VVwSFCh7WDlhZSFBOpOlpk5q967cVusa8VtEsr5HFMqNFdDnYHcwBItfha/XlJHD4rMbMjIbZgGsQV5hh5i4Oov6yHZw3tPaIPbWKotmyXKDuowJubZbnQjQacep8EwQu7sz2ta9wEvfKOLWNu8dTacbZEOsa7Eqo76fkuQd176H03TokDQrZWB5fMcZOA31HHdOdbas9TBi8SwyDPLCZmDA8iJ5aBIGYMGYED3QrFGDLvHz6S14esHUMu4/wDSJUbSS2Ni8jZG8LH4N/zNHDyZOT6cuSuxsLDERNrMREQOPaH5fX7SCxok7tD8vkftIbGDSBH7CpXxSH3Q7fK3+U7O2uBv7KsBqjZG/S+74MB8Zjsyt8Q55J9WH7SxbQwwqU3Q/mUjyPA/G0CqUh3ZjB1slZG4ZgD5N3fvM4W+Wx3jQjkRoR8ZzY1dNN+8faQlY9q0Ar3IulQFXHMhSGH9SX9UWQ2KoGpQyOf4lFvYsRa7IbGm4vvuuVv7pL7WxBfDI6EBnKMpO4OO8CbcAVkW2pvYXsB6C+UX5C9pw57REY6cdZmdaMLhcmZmIZ3N3a1r2AAAHAWG6dExExtCExNHIxHDh5HdJTAqwQBvTnbrNzICQbajcZm8rFcnUszBMxeJYAYEQTI0Gnm89TBEADMESKpYupdC7JZ8wUBCBmViCjvmOU8mta+8SQwtXOgYrlOoZSQSrAkEEjqDJmuI1tmIZgN80tikH519Df6RGi1bJxedbN4l0PUcDO+UvB7SCMGXMQDZrKbW3EXNpcqdQMAym4IuJu4b+Vcn2y3r4z09RE1YmrlW/HhOyjk2hVFx0vILH4kWM27QxVgdZUmepiKy0aXiY7+CqPEx6AQLZ2OXM1V+HdQHqLs31EtM5dm4FKNNadPco3nexOpY9SdZ1QK5tKhkrNbc4D+u5vmL+sicaZYtuLqh/UPoZX8amkDg2vtVk2azKe9TdgvyIHl37SQwmIzojgEB0RwDwDKGt85Su2GJK4OqnNg3y/8AzPolXBZKFAjhTpo3mqKBM/PXa7+O3FbJxzAxeYmbzG0MzyTF5i0D1E83i8gerwJiacRiVQXY8DZfzNYEkKOJsDGIb5po4hHvkYNY2NuB4W5+e6RWIxitUSlUPfqo70qY1RsouPaN+bnl3W5zRsjaDOvtKoValJjRxKKLBbN3HA90XBB91m5S/hOajyjcecRhUS5qln79nVmVAyOCFcgZVuNx5kc57TE06buaQJFg6lFZ1ZcuqHKCALq1jvBvffrM4zCq4AOjKQytvsQQRfmDYXE43w1bM7oURmUKVGZ1ex1JBsAcpNvneTExMdmY6NoYbOhyGzWOVgFYrcbwGBBO74SF2XRr00qLXrq9Q3KsAAfZsvccJYXytc2tpLCgCKq38IC3NrmwtcziqrTuSWbiO6baHeMwANtTpfjEWyMJje0biMG4pg1X9o6b3ChM50IKi9rsMuu4MqngZaex+1Sy+zqAg/lvb/EkC++19JFYYBntRogt5XI8zwHrLNs3ZBWzVWuRYhV8IPU8T8p14vKZ2HK+RGSmHewvIzG1SfSdeJbW3ITgxAmxwVXbdU2MnOxOyBSpe1cfxKvevxVPyqPqfORO1aWYhfeIX4kD7y+IoUADcAAPIaCBmIiBHbaXuKeTfUGV/EpcSy7VW9M9CD85B+zvA+bdtk0VeDOgPkWI+5n2vE4cOhXpp0I3T512s2GaqZV8Tq2Q/wDkQFkHrr8JZNn7aetQp1EYAOitoBcG3eBvxBuJExsYnXI2lwd40PnMXma7EsSTcnUnmZ4E829ZraYa6zsa9gzJM8AzIMqsEwZhpSu0/axaIC5MzuoZaeophTuNRt7n+RdOBvLUpNpyEWtkbK2HFZzlpEE2uX8SgXKnKB4muN24aX5GGwu1qNSu+Hp53qC+esFzKjKQVJbhla2gFtDpNuENVKdCrVFqhVTUUADvW7y2GgugGnvInOdFKilNwMKqahi6ppmLEMru+4c7m7amwl8iNV2ZR21aTPQIUZatFlqUTdVCOrgOpZiBkUk3/kZbXm7BbLd6rYiocruoVioZEyhSvcpt4zlYjO48l4zrxdalRBqYlkLXDagBUYDKCt+NuJ1NhyEr1ftHWxLZMIgA1776DqQp3+Z+EtXyt1Cs5HcrVWxqIoVTooAzMdLAW3nf5yDxXaemuntM55IC3/rIyrshF7+MrF+dzZfJQdPgJrfbFGkt8PhrgbnYBV/ueXrwfqs8v46xtevU/wBjDtb3qhsPl+811hWXvYnEpSUakKF+ZM4cBiMfj2KYZdBozL3aafqqH6DXpPofZv8ADyhQZauJP+orDUF9aanmineerX6WnavDWHOb2lYOy4Bw1NwgQuoYixBPJiDrqLGx3XkvETpEYo48UO8OonM6EjSd+LW635a+nGcqOJIgcfgHbUW0II8wZa6VQMAym4Mj6izmGINJsw8P5h05jrAnIhTcXHGIGnGLdH8jIdBpJyqO6fI/SVLbW2Ew1E1H13BVG93O5R9zwEDo2lSLocvjWzp+pdQPXUespTbfTCGorAslS1egqjX+Jf2tP+Wzgtr78r+0tvviCfbVnUHclNiiDppq3m15X8dspvFScsDwJ73oeMC39n9t4vFYtciFqYuHRB3UQjxu54g289bCXOpUygsdwBJ9AT9p807DduamBYJV7+GY3dLDOhO90O8kcVPpafStvVFWmzoDUpuhdfZ2OZHGpBOlgCdflMvPT1MO/Ff6Q2IxNnBxZ7jqrIabMq0ixCqHAIZnLGwcXHQbz72XimRDdHNNXe7lr1Ll2Yu6neouASNQQdNJrw7+yqf/ACSXyopWp3SlO5bKlsoOfRrMAb23LND0XNOswcJTZqqqqG/tCXKra4shOoIXxXvpOOR6XWiRuIyJnWoEIYMyZx3czaOg0J3kGw17xtukhILbnaShh/EQzjwqNSD06+UrWJmelrZnbbhMM60wK1Rsgy3Z7BzktlCj8g0G+7niRIXa3a5EvSwaBm18IAVSd5JG76yr7U21XxJvUYonBAbMR9hOenh2CdxQie+5CKfU6t6TTTh+7OM8mdQ9YiqztnxD533hfyKeg4mdeG22KWYtfO2gCKuYDkM3dQehMh3q01Pjeox0AQZFvyDEZj6CW/sz+G+IxNqldf8AS0Tra16zjoG8Pm3wneIxzmUCu0qtZwmHpFqjeEAGrUP9TeEeQAEv3Zz8MWYirtNyx3iirE/3v/ivxMv2wOz2GwaZMNTC38TnvO3VnOp+klpZVowmFSkgSkioi6KqgKo9BN8RAREQE5amCU6qSp6aj4TqiBwPg34Ovqp/ec1XY7Po9Ww4hFsSPMk2+EmIgeaaBQFG4AAeQFhPURAGfCPxSz0sUKbVS4CZ1W2VUDsyqoF9TZdT1n3efCvxiokbQUnc9Cnb+l3B+3xgUKnSdzcXF9RykhgMW6Nkc+R4ehklhadXDNh6xWykB6ZIurBb8OOs0dp8eMRU9uEVGYjMFAAueNhI3vE5Oa4tuqCVqLYZ75hwDrv+IIPxkz2C205rDDVXZ6LoaaoxOVCSSoXkDdh6iVvFVbqV8j67vpJ/8L9l0q+NyV0zqlN6ii7Czoy5WOUi9rnSRauxMFZydfQkwrpVL5BVJRUR2ZVZACxIcneDm8Si5tqOM0nC0cNkqVHylA+n5GLcVQk2YAABhrYamTW2cJiUV2w1NXZdVBcBmF9cg3FrcCRPkW1hVq1SKhrO1/8Abak6ODwUoLk+mky14rT76drXrHpM7a7aPVumFGVeLmVhiFJZyXfiTqfTkJf+zf4cVagD4wmgltKa29q3IsdVQdNT5Tk2l+DuJzH/AE+IpupP/wBmdGA4XyhgflNNaVr6crWm3t89xG0WvpL3+GHZIY81a+OVnoquRLsykuSCWVgb90C3LvdJNbC/BhQwbHV84Fv4dIFQejOdbeQHnPq+CwaUkWnSVURRZVUWAEuqgdh9h8FhXz0aN34O7M7D9ObRfMSyxEBERAREQEREBERAREQEREBPmP41bILUaWKQXNBir/oqEWPowH90+nTRjMKlVGp1FDI6lXU7ipFiIHwzAbSXEYRMNUKAI5dHa+ZAdSqkbtbnUW1tpK5ttAhy5w53sRoL8up8tJJ9sOyGI2e7MgZ8MT3KgBOUe7Ut4WG6+47+kqFbFFt5vA81nn0n8EdnE1a+II7qqKSngWdg7D0Cr/cJWeznYXF4xgVQ06R31nUqtv5VOrHy06z732f2HTwlBKFEHKu9jbM7HxOx5k/YcIHcqTYqTatObAkDwiTYomQIgIiICIiAiIgIiICIiAiIgIiICIiAmYiBqcXBB1E46ex8OHzLh6IN94poD8bREDqSbRMxAzMREBERAREQEREBERAREQERED//2Q==" alt="">
+    </div>
     <div *ngIf="selected!=0">
         <h6>Les Commandes à livrer dans la {{ g.libelle }}</h6>
     <ul>
         <li *ngFor="let y of g.quartiers">{{ y.libelle }}</li>
     </ul>
     </div>
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered text-center" *ngIf="deliv.length > 0">
         <tr class="row text-center bg-warning">
-            <th class="col-2">Ref</th>
-            <th class="col-2">Produits</th>
+            <th class="col-4">Commandes</th>
             <th class="col-2">Etat</th>
             <th class="col-2">Date</th>
             <th class="col-4" *ngIf="selected!=0">Sélection(s)</th>
         </tr>
         <tr class="row" *ngFor="let list of deliv; let ii=index">
-            <td class="col-2 mt-3">
-                <p>{{ii}}</p>                                
-            </td>
-            <td class="col-2 mt-3" >
-                        <p *ngFor="let p of list.Produits">{{ p.Produit.nom }}</p>                                
+            <td class="col-4 mt-3" >
+                        <p>{{list.ref}}</p>                                
             </td>
             <td class="col-2 mt-3 text-center">
                 <p>{{list.etat}}</p>
@@ -43,9 +44,9 @@
          </tr>
     </table>
 </div>
-<div class="col-md-2 offset-1 text-center">
-    <form class="mb-5" #commandeform="ngForm" (ngSubmit)="commande()">
-    <div  class="mt-3 mb-2 bg-warning rounded row d-flex justify-content-center" #Zone id="zone">
+<div class="col-md-2 offset-1 text-center" *ngIf="deliv.length > 0">
+    <form class="mb-5" #commandeform="ngForm" (ngSubmit)="li()">
+    <div  class="mt-3 mb-2 bg-warning rounded row d-flex justify-content-center" #Zone id="zone" >
         <h6 class="mb-3 mt-3">Choisissez votre Zone</h6>
         <select class="form-select mb-3 w-75" aria-label="Disabled select example" #select (change)="selec(select)">
           <option selected value="0">Selectionner Votre Zone ...</option>
@@ -53,7 +54,7 @@
         </select>
         <h4></h4>
       </div>
-      <div  class=" mt-3 mb-2 bg-warning rounded row d-flex justify-content-center" #Zone id="zone">
+      <div  class=" mt-3 mb-2 bg-warning rounded row d-flex justify-content-center" #Zone id="zone" >
         <h6 class="mb-3 mt-3">Choix du Livreur</h6>
         <select class="form-select mb-3 w-75" aria-label="Disabled select example" #liv (change)="livre(liv)">
           <option selected value="0">Selectionner le Livreur...</option>
@@ -62,7 +63,7 @@
         <h4></h4>
       </div>
       <div class=" mt-3 mb-2 bg-warning rounded row d-flex justify-content-center">
-          <button class="btn btn-primary btn-block btn-lg" *ngIf="selected!=0 && livreur!=0">Commande</button>
+          <button class="btn btn-primary btn-block btn-lg" *ngIf="selected!=0 && livreur!=0 && livrer.length>0">Livrer</button>
       </div>
     </form>
     </div>

@@ -32,9 +32,9 @@
                                     </td>
                                     <td class="col-3 d-flex justify-content-around mt-3">
                                         <div class="row d-flex justify-content-around" style="height: 50px;">
-                                        <button class="col-3 btn btn-outline-primary" (click)="addProduit(list,2)">-</button>
+                                        <button class="col-3 btn btn-outline-primary" (change)="addProduit(list,2)">-</button>
                                         <input class="col-4 text-center btn btn-outline-primary" type="number" min="1" value="{{ list.qte }}">
-                                        <button class="col-3 btn btn-outline-primary" (click)="addProduit(list,1)">+</button>
+                                        <button class="col-3 btn btn-outline-primary" (change)="addProduit(list,1)">+</button>
                                         </div>
                                     </td>
                                     <td class="col-2 mt-3" >
@@ -42,7 +42,7 @@
                                         <input type="text" style="width:60%; text-align:center; border:none" readonly disabled *ngIf="!list.remise" value="{{ +list.prix * +list.qte}}">
                                     </td>                        
                                     <td class="col-2 mt-3">
-                                        <button class="col-3 btn btn-outline-primary" (click)="addProduit(list,0)"><i class="fa fa-ban" aria-hidden="true"></i>
+                                        <button class="col-3 btn btn-outline-primary" (change)="addProduit(list,0)"><i class="fa fa-ban" aria-hidden="true"></i>
                                         </button>
                                     </td>                        
                                  </tr>
@@ -53,9 +53,9 @@
          
                          <h3 class=" mb-3 pt-2 text-center fw-bold text-uppercase">Commande</h3>
          
-                         <form class="mb-5" #commandeform="ngForm" (ngSubmit)="commande()">
+                         <form class="mb-5">
                           <div class="form-outline mb-5">     
-                              <div class="row mt-3 ">
+                              <div class="row mt-3 " *ngIf="panier.length>0">
                                 <h6>Mode de Recupération</h6>
                                 <div class="col-md-6 d-flex justify-content-between">
                                   <input type="radio" value="place" (click)="place()" name="payement" id="payement" [formControl]="name">
@@ -93,7 +93,7 @@
                             <input type="number" name="Produit" id="" ngModel><br>
                             <input type="number" name="Qte" id="" ngModel ><br>
                           </div>      -->
-                           <button class="btn btn-primary btn-block btn-lg" *ngIf="name.value ==='place' || t">Commander</button>
+                           <button class="btn btn-primary btn-block btn-lg" *ngIf="(name.value ==='place' || t) && panier.length>0" (click)="commande()">Commander</button>
                            <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
                             <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> 
                             <a href="#" [routerLink]='["/catalogue"]' class="ms-3">Back to shopping</a>

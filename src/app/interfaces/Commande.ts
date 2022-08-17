@@ -7,8 +7,9 @@ export interface ICommande{
     date:Date,
     zone:IZone,
     Produits:ILigne[],
-    client?:string
-    gestionnaire?:string
+    client?:string,
+    ref:string,
+    gestionnaire?:string,
     }
 
     export interface IUser{
@@ -32,6 +33,12 @@ export interface ICommande{
         prix:number,
         commandes:ICommande[],
         quartiers:IQuartier[]
+    }
+    export interface ILivraison{
+        id:number,
+        etat:string,
+        commandes:ICommande[],
+        date:string
     }
 
          

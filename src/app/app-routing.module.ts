@@ -8,8 +8,8 @@ import { DetailsComponent } from './details/details.component';
 import { PanierComponent } from './panier/panier.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { CommandeslistComponent } from './commandeslist/commandeslist.component';
-import { CommandeComponent } from './commande/commande.component';
-import { DetailscommandeComponent } from './detailscommande/detailscommande.component';
+import { CommandeComponent } from './admin/commande/commande.component';
+import { DetailscommandeComponent } from './admin/detailscommande/detailscommande.component';
 
 
 
@@ -20,8 +20,6 @@ const routes: Routes = [
   }, */
   { path: 'catalogue', component: CatalogueComponent, },
   { path: 'panier', component: PanierComponent, },
-  { path: 'commande', component: CommandeComponent, },
-  { path: 'commande/:id', component:DetailscommandeComponent, },
   { path: 'commandes', component: CommandesComponent, data: { animation: 'openClosePage' }},
   { path: 'commandes/:id', component: CommandeslistComponent, },
   { path: 'burgers', component: BurgersComponent, },

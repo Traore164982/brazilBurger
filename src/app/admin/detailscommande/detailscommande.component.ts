@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ICommande } from '../interfaces/Commande';
-import { ProduitsService } from '../produits/produits.service';
+import { ICommande } from '../../interfaces/Commande';
+import { ProduitsService } from '../../produits/produits.service';
 
 @Component({
   selector: 'app-detailscommande',

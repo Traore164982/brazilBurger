@@ -1,0 +1,33 @@
+<div class="container text-center">
+    <h3 class="mt-3 text-decoration-underline">La Liste des Commandes de la {{zone.libelle}}</h3>
+    <table class="table table-bordered text-center">
+        <tr class="row text-center bg-warning">
+            <th class="col-2">Ref</th>
+            <th class="col-2">Commandes</th>
+            <th class="col-2">Etat</th>
+            <th class="col-2">Date</th>
+            <th class="col-3">Options</th>
+        </tr>
+        <tr class="row" *ngFor="let list of commandes; let ii=index">
+            <td class="col-2 mt-3">
+                <p>{{ii}}</p>                                
+            </td>
+            <td class="col-2 mt-3" >
+                        <p>{{ list.ref }}</p>                                
+            </td>
+            <td class="col-2 mt-3 text-center">
+                <input type="text" class="w-75 text-center" [value]=list.etat #v disabled="disabled">
+        </td>
+            <td class="col-2 mt-3" >
+                {{ list.date | date:'HH:mm' }}
+            </td>  
+            <td class="col-3 mt-3" >
+                <div class="row d-flex justify-content-around">
+                    <!-- <button class="btn col-4 btn-outline-danger" *ngIf="list.etat=='Validée' && list.date.toString().substring(0,10)==completeDate" #btn (click)="cli(list,btn)">Annuler</button>
+                    <button class="btn col-4 btn-outline-success" #btn *ngIf="(list.etat=='En Attente' || list.etat=='Annulée') && list.date.toString().substring(0,10)==completeDate" (click)="cli(list,btn)">Valider</button>
+                    <button class="btn btn-outline-warning col-4"  [routerLink]="['/admin/commande',list.id]" >Details</button>
+                 --></div>
+            </td>                                               
+         </tr>
+    </table>
+</div>

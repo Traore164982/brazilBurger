@@ -22,6 +22,8 @@ export class CardsBoissonsComponent implements OnInit {
 
   qte:number=0;
 
+  nbr:number=0;
+
 
   
 /* 
@@ -39,9 +41,26 @@ export class CardsBoissonsComponent implements OnInit {
     if ((this.qte == 0 && n<0) || (this.produitService.tabQteBoisson[this.prod.Taille.id].som==this.produitService.tabQteBoisson[this.prod.Taille.id].qte && n>0)) {
      this.produitService.trouve=true
       return;
-    }    
+    }  
       this.qte+=n;
       this.produitService.tabQteBoisson[this.prod.Taille.id].som+=n;
+      console.log(this.produitService.tabQteBoisson[this.prod.Taille.id].som);
+      console.log(this.produitService.tabQteBoisson[this.prod.Taille.id]);
+      console.log(this.produitService.taille);
+     /*  for (let index = 0; index < this.produitService.tabQteBoisson.length; index++) {
+        const element = this.produitService.tabQteBoisson[index];
+        
+        for (let index = 0; index < this.produitService.taille.length; index++) {
+          const e = this.produitService.taille[index];
+          if(element==e)         
+        }
+        
+      } */
+      
+
+      
+      console.log(this.produitService.quantite);
+      
     }
      /* if((this.qte == 0 && n<0) || (this.produitService.tabQteBoisson[this.prod.Taille.id].som == this.produitService.tabQteBoisson[this.prod.Taille.id] && n>0 )) {
       return;      

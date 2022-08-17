@@ -25,7 +25,7 @@
         </td>  
         <td class="col-3 mt-3" >
             <div class="row d-flex justify-content-around">
-                <button class="btn btn-outline-danger col-4" *ngIf="list.date.toString().substring(0,10)==completeDate" #btn (click)="cli(list,btn)">Annuler</button>
+                <button class="btn btn-outline-danger col-4" *ngIf="list.date.toString().substring(0,10)==completeDate && list.etat=='En Attente'" #btn (click)="cli(list,btn)">Annuler</button>
                 <button class="btn btn-outline-warning col-4"  [routerLink]="['/commandes',list.id]" >Details</button>
             </div>
         </td>                                               

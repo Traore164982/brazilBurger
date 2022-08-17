@@ -37,6 +37,7 @@ export class DetailsComponent implements OnInit {
   Bois:IProduit[]=[];
   Frites:IProduit[]=[];
   similaires:IProduit[]=[];
+  quantite:number = 0;
 
   test:boolean = false;
 
@@ -132,6 +133,7 @@ export class DetailsComponent implements OnInit {
         this.elem.menuTailles?.forEach(elem => {
           this.boissonId.push(elem);
           this.produitsService.tabQteBoisson[elem.Taille.id]= {qte:elem.qte,som:0}
+          this.quantite+=elem.qte;
           this.produitsService.taille.push(elem.Taille.id);
           this.produitsService.getBoissons().subscribe(
             nex =>{
@@ -141,16 +143,20 @@ export class DetailsComponent implements OnInit {
                 }
               });
             }
-          );
-       /* 
-       {
-        qte: number;
-        som: number
-    }
-
-
-
-       if(elem.Taille?.libelle=="Canette"){
+            );
+            console.log(this.quantite)
+            this.produitsService.quantite=this.quantite;
+            console.log(this.produitsService.quantite);
+            
+            /* 
+            {
+              qte: number;
+              som: number
+            }
+            
+            
+            
+            if(elem.Taille?.libelle=="Canette"){
             this.produitsService.getBoisson().subscribe(
               nex=>{      
                 nex.canette.forEach(e=>{

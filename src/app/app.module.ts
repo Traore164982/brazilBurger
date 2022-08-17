@@ -23,8 +23,8 @@ import { CommandesComponent } from './commandes/commandes.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommandeslistComponent } from './commandeslist/commandeslist.component';
 import { BtnComponent } from './btn/btn.component';
-import { CommandeComponent } from './commande/commande.component';
-import { DetailscommandeComponent } from './detailscommande/detailscommande.component';
+import { CommandeComponent } from './admin/commande/commande.component';
+import { DetailscommandeComponent } from './admin/detailscommande/detailscommande.component';
 
 @NgModule({
   declarations: [
